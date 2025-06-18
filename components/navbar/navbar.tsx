@@ -1,10 +1,13 @@
+'use client'
 import Link from "next/link";
 import ThemeToggle from "../theme-toggle";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
   return (
-    <nav className="flex items-center justify-between p-4 bg-amber-300  ">
+    <nav className="flex items-center justify-between p-4 bg-amber-300 shadow-xl ">
       <Link
         href="/"
         className="text-xl font-bold text-gray-900 dark:text-gray-800 "
@@ -20,21 +23,25 @@ export default function Navbar() {
       <div className="flex items-center space-x-10 transition-all duration-300 font-semibold">
         <Link
           href="/"
-          className="text-gray-900 dark:text-gray-800 "
+          className={`group relative  dark:text-gray-800 ${ pathname === '/' ? 'text-gray-500' : 'text-gray-900'}`}
         >
-          Home
+          หน้าแรก
+          <span className="absolute left-0 -bottom-1.5 h-[2px] bg-gray-800 transition-all duration-300 w-0 group-hover:w-full" />
         </Link>
+
         <Link
           href="/personal-page"
-          className="text-gray-900 dark:text-gray-800 hover:underline"
+          className={`group relative  dark:text-gray-800 ${ pathname === '/personal-page' ? 'text-gray-500' : 'text-gray-900'}`}
         >
-          Personal Form
+          แบบฟอร์มขอข้อมูลทั่วไป
+          <span className="absolute left-0 -bottom-1.5 h-[2px] bg-gray-800 transition-all duration-300 w-0 group-hover:w-full" />
         </Link>
         <Link
           href="/satisfaction-page"
-          className="text-gray-900 dark:text-gray-800 hover:underline"
+          className={`group relative  dark:text-gray-800 ${ pathname === '/satisfaction-page' ? 'text-gray-500' : 'text-gray-900'}`}
         >
-          Satisfaction Form
+          แบบฟอร์มสำรวจความพึงพอใจบริการ
+          <span className="absolute left-0 -bottom-1.5 h-[2px] bg-gray-800 transition-all duration-300 w-0 group-hover:w-full" />
         </Link>
       </div>
       <ThemeToggle />

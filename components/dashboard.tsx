@@ -12,7 +12,7 @@ import {
 
 export default function DashBoard() {
   return (
-    <div className="m-10">
+    <div className="m-10 pt-90">
       <h1 className="text-2xl font-bold text-center">
         เลือกแบบฟอร์มที่ต้องการกรอก
       </h1>
